@@ -1,0 +1,1458 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MULASTAR | Professional Assessment Survey</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #2ecc71;
+        --danger-color: #e74c3c;
+        --warning-color: #f39c12;
+        --light-color: #f8f9fa;
+        --dark-color: #2c3e50;
+        --border-radius: 10px;
+        --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .professional-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      /* Header Styles */
+      .dashboard-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #1a2530 100%
+        );
+        color: white;
+        padding: 25px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .branding {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .branding h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .branding p {
+        opacity: 0.9;
+        font-size: 14px;
+      }
+
+      .header-stats {
+        display: flex;
+        gap: 25px;
+        text-align: right;
+      }
+
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 13px;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Timer Section */
+      .timer-section {
+        background: #f8f9fa;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .timer-display {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .timer-icon {
+        color: var(--danger-color);
+        font-size: 20px;
+      }
+
+      .timer {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--danger-color);
+        background: white;
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 2px solid var(--danger-color);
+        min-width: 100px;
+        text-align: center;
+      }
+
+      .progress-container {
+        flex-grow: 1;
+        margin: 0 30px;
+      }
+
+      .progress-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .progress-bar {
+        height: 8px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-color), #27ae60);
+        width: 10%;
+        border-radius: 4px;
+        transition: width 0.5s ease;
+      }
+
+      /* Questions Container */
+      .questions-container {
+        padding: 30px 40px;
+        max-height: 550px;
+        overflow-y: auto;
+      }
+
+      .question-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 25px;
+        border: 1px solid #eaeaea;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .question-card.active {
+        border-color: var(--secondary-color);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.15);
+      }
+
+      .question-card:hover {
+        box-shadow: var(--box-shadow);
+      }
+
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .question-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .question-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .question-category {
+        padding: 6px 15px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .category-mental {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+
+      .category-math {
+        background: #f3e5f5;
+        color: #7b1fa2;
+      }
+
+      .category-business {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .question-value {
+        background: linear-gradient(90deg, #f39c12, #e67e22);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .question-text {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .options-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+
+      @media (max-width: 768px) {
+        .options-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .option-card {
+        padding: 18px 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+      }
+
+      .option-card:hover {
+        border-color: var(--secondary-color);
+        background-color: #f8fafc;
+      }
+
+      .option-card.selected {
+        border-color: var(--secondary-color);
+        background-color: #e3f2fd;
+      }
+
+      .option-card.correct {
+        border-color: var(--accent-color);
+        background-color: #d4edda;
+      }
+
+      .option-card.incorrect {
+        border-color: var(--danger-color);
+        background-color: #f8d7da;
+      }
+
+      .option-indicator {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #f0f0f0;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .selected .option-indicator {
+        background: var(--secondary-color);
+        color: white;
+      }
+
+      .correct .option-indicator {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      .incorrect .option-indicator {
+        background: var(--danger-color);
+        color: white;
+      }
+
+      .option-text {
+        font-size: 16px;
+        flex-grow: 1;
+      }
+
+      .feedback-box {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .feedback-correct {
+        background: #d4edda;
+        color: #155724;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .feedback-incorrect {
+        background: #f8d7da;
+        color: #721c24;
+        border-left: 4px solid var(--danger-color);
+      }
+
+      /* Navigation */
+      .survey-navigation {
+        padding: 20px 40px;
+        border-top: 1px solid #eaeaea;
+        display: flex;
+        justify-content: space-between;
+        background: #f8f9fa;
+      }
+
+      .nav-button {
+        padding: 14px 30px;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-width: 160px;
+      }
+
+      .nav-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .button-outline {
+        background: transparent;
+        border: 2px solid var(--secondary-color);
+        color: var(--secondary-color);
+      }
+
+      .button-outline:hover:not(:disabled) {
+        background: var(--secondary-color);
+        color: white;
+      }
+
+      .button-primary {
+        background: var(--secondary-color);
+        color: white;
+        border: 2px solid var(--secondary-color);
+      }
+
+      .button-primary:hover:not(:disabled) {
+        background: #2980b9;
+        border-color: #2980b9;
+      }
+
+      .button-success {
+        background: var(--accent-color);
+        color: white;
+        border: 2px solid var(--accent-color);
+      }
+
+      .button-success:hover:not(:disabled) {
+        background: #27ae60;
+        border-color: #27ae60;
+      }
+
+      /* Results Dashboard */
+      .results-dashboard {
+        padding: 40px;
+        display: none;
+      }
+
+      .dashboard-header-results {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .dashboard-header-results h2 {
+        font-size: 32px;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .dashboard-header-results p {
+        color: #666;
+        font-size: 18px;
+      }
+
+      .earnings-card {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: white;
+        border-radius: var(--border-radius);
+        padding: 40px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+      }
+
+      .earnings-label {
+        font-size: 18px;
+        margin-bottom: 15px;
+        opacity: 0.9;
+      }
+
+      .earnings-amount {
+        font-size: 60px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .earnings-details {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+
+      .score-breakdown {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .breakdown-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        border-top: 4px solid var(--secondary-color);
+      }
+
+      .breakdown-card.correct {
+        border-top-color: var(--accent-color);
+      }
+
+      .breakdown-card.incorrect {
+        border-top-color: var(--danger-color);
+      }
+
+      .breakdown-card.earned {
+        border-top-color: var(--warning-color);
+      }
+
+      .breakdown-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        color: var(--secondary-color);
+      }
+
+      .breakdown-card.correct .breakdown-icon {
+        color: var(--accent-color);
+      }
+
+      .breakdown-card.incorrect .breakdown-icon {
+        color: var(--danger-color);
+      }
+
+      .breakdown-card.earned .breakdown-icon {
+        color: var(--warning-color);
+      }
+
+      .breakdown-value {
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .breakdown-label {
+        font-size: 16px;
+        color: #666;
+      }
+
+      .welcome-message {
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        margin: 30px 0;
+        display: none;
+        animation: fadeIn 1s ease;
+        border-left: 5px solid var(--secondary-color);
+      }
+
+      .welcome-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .welcome-icon {
+        font-size: 32px;
+        color: var(--secondary-color);
+      }
+
+      .welcome-message h3 {
+        font-size: 24px;
+        color: var(--primary-color);
+      }
+
+      .welcome-message p {
+        font-size: 16px;
+        color: #2c3e50;
+        line-height: 1.6;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .button-icon {
+        margin-right: 8px;
+      }
+
+      /* Scrollbar Styling */
+      .questions-container::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .questions-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .questions-container::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 10px;
+      }
+
+      .questions-container::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        .dashboard-header {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+        }
+
+        .header-stats {
+          width: 100%;
+          justify-content: space-around;
+          text-align: center;
+        }
+
+        .timer-section {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .progress-container {
+          width: 100%;
+          margin: 10px 0;
+        }
+
+        .survey-navigation {
+          flex-direction: column;
+          gap: 15px;
+          align-items: center;
+        }
+
+        .nav-button {
+          width: 100%;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="professional-container">
+      <!-- Header Section -->
+      <header class="dashboard-header">
+        <div class="branding">
+          <div class="logo">M</div>
+          <div>
+            <h1>MULASTAR SURVEY</h1>
+            <p>Professional Assessment Platform</p>
+          </div>
+        </div>
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="stat-value" id="totalQuestions">10</div>
+            <div class="stat-label">Questions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">
+              KSH <span id="potentialEarnings">100</span>
+            </div>
+            <div class="stat-label">Potential Earnings</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="answeredCount">0</div>
+            <div class="stat-label">Answered</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Timer Section -->
+      <section class="timer-section">
+        <div class="timer-display">
+          <i class="fas fa-clock timer-icon"></i>
+          <div class="timer" id="timer">03:00</div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-info">
+            <span>Question <span id="currentQuestion">1</span> of 10</span>
+            <span><span id="progressPercent">10%</span> Complete</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+        <div>
+          <i class="fas fa-coins" style="color: #f39c12; margin-right: 8px"></i>
+          <span style="font-weight: 600">KSH 10 per question</span>
+        </div>
+      </section>
+
+      <!-- Questions Container -->
+      <main class="questions-container" id="questionsContainer">
+        <!-- Questions will be dynamically inserted here -->
+      </main>
+
+      <!-- Navigation -->
+      <section class="survey-navigation">
+        <button class="nav-button button-outline" id="prevBtn">
+          <i class="fas fa-arrow-left button-icon"></i>
+          Previous
+        </button>
+        <button class="nav-button button-primary" id="nextBtn">
+          Next
+          <i class="fas fa-arrow-right button-icon"></i>
+        </button>
+        <button
+          class="nav-button button-success"
+          id="submitBtn"
+          style="display: none"
+        >
+          <i class="fas fa-paper-plane button-icon"></i>
+          Submit Survey
+        </button>
+      </section>
+
+      <!-- Results Dashboard -->
+      <section class="results-dashboard" id="resultsDashboard">
+        <div class="dashboard-header-results">
+          <h2>Assessment Completed</h2>
+          <p>Your results and earnings are ready</p>
+        </div>
+
+        <div class="earnings-card">
+          <div class="earnings-label">Total Earnings</div>
+          <div class="earnings-amount" id="earningsAmount">KSH 0</div>
+          <div class="earnings-details">
+            Based on <span id="correctCount">0</span> correct answers at KSH 10
+            per question
+          </div>
+        </div>
+
+        <div class="welcome-message" id="welcomeMessage">
+          <div class="welcome-header">
+            <i class="fas fa-handshake welcome-icon"></i>
+            <h3>Welcome Back!</h3>
+          </div>
+          <p>
+            It's great to see you again! We're pleased to have you continue your
+            professional development journey with MULASTAR. Your commitment to
+            growth is commendable.
+          </p>
+        </div>
+
+        <div class="score-breakdown">
+          <div class="breakdown-card correct">
+            <i class="fas fa-check-circle breakdown-icon"></i>
+            <div class="breakdown-value" id="correctDisplay">0</div>
+            <div class="breakdown-label">Correct Answers</div>
+          </div>
+          <div class="breakdown-card incorrect">
+            <i class="fas fa-times-circle breakdown-icon"></i>
+            <div class="breakdown-value" id="incorrectDisplay">0</div>
+            <div class="breakdown-label">Incorrect Answers</div>
+          </div>
+          <div class="breakdown-card earned">
+            <i class="fas fa-chart-line breakdown-icon"></i>
+            <div class="breakdown-value" id="percentageDisplay">0%</div>
+            <div class="breakdown-label">Success Rate</div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="nav-button button-outline" id="reviewBtn">
+            <i class="fas fa-eye button-icon"></i>
+            Review Answers
+          </button>
+          <button class="nav-button button-primary" id="restartBtn">
+            <i class="fas fa-redo button-icon"></i>
+            Retake Assessment
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Professional survey configuration
+      const CONFIG = {
+        QUESTION_VALUE: 10, // KSH per correct answer
+        TOTAL_QUESTIONS: 10,
+        TIME_LIMIT: 180, // 3 minutes in seconds
+        STORAGE_KEY: "mulastar_survey_data",
+      };
+
+      // Enhanced survey questions with detailed feedback
+      const surveyQuestions = [
+        {
+          id: 1,
+          category: "mental",
+          question:
+            "What is the most effective approach to handling failure in professional settings?",
+          options: [
+            {
+              letter: "A",
+              text: "Disengage and abandon the project",
+              correct: false,
+            },
+            {
+              letter: "B",
+              text: "Conduct a systematic analysis and implement improvements",
+              correct: true,
+            },
+            {
+              letter: "C",
+              text: "Attribute responsibility to external factors",
+              correct: false,
+            },
+            {
+              letter: "D",
+              text: "Minimize the significance and proceed unchanged",
+              correct: false,
+            },
+          ],
+          feedback: {
+            correct:
+              "Correct. Professional growth requires analyzing setbacks to implement strategic improvements.",
+            incorrect:
+              "The most effective approach involves systematic analysis and implementing improvements based on lessons learned.",
+          },
+        },
+        {
+          id: 2,
+          category: "mental",
+          question:
+            "A growth-oriented mindset primarily facilitates which professional outcome?",
+          options: [
+            {
+              letter: "A",
+              text: "Maintenance of current competency levels",
+              correct: false,
+            },
+            {
+              letter: "B",
+              text: "Continuous development and capability enhancement",
+              correct: true,
+            },
+            {
+              letter: "C",
+              text: "Avoidance of challenging assignments",
+              correct: false,
+            },
+            {
+              letter: "D",
+              text: "Preservation of established methodologies",
+              correct: false,
+            },
+          ],
+          feedback: {
+            correct:
+              "Correct. A growth mindset fosters continuous professional development and adaptability.",
+            incorrect:
+              "Research indicates growth mindsets directly correlate with continuous capability enhancement and professional development.",
+          },
+        },
+        {
+          id: 3,
+          category: "mental",
+          question: "Which definition best describes professional gratitude?",
+          options: [
+            {
+              letter: "A",
+              text: "Documenting procedural inefficiencies",
+              correct: false,
+            },
+            {
+              letter: "B",
+              text: "Acknowledging and valuing available resources and opportunities",
+              correct: true,
+            },
+            {
+              letter: "C",
+              text: "Benchmarking against industry competitors",
+              correct: false,
+            },
+            {
+              letter: "D",
+              text: "Expressing dissatisfaction with current conditions",
+              correct: false,
+            },
+          ],
+          feedback: {
+            correct:
+              "Correct. Professional gratitude involves recognizing and valuing available resources, fostering positive work environments.",
+            incorrect:
+              "Professional gratitude is defined as acknowledging and valuing available resources and opportunities, not comparison or complaint.",
+          },
+        },
+        {
+          id: 4,
+          category: "mental",
+          question:
+            "Which practice represents an evidence-based habit for developing professional resilience?",
+          options: [
+            {
+              letter: "A",
+              text: "Engaging in negative self-assessment",
+              correct: false,
+            },
+            {
+              letter: "B",
+              text: "Establishing incremental, measurable objectives",
+              correct: true,
+            },
+            {
+              letter: "C",
+              text: "Avoiding situations with potential for difficulty",
+              correct: false,
+            },
+            {
+              letter: "D",
+              text: "Extensive deliberation without decision",
+              correct: false,
+            },
+          ],
+          feedback: {
+            correct:
+              "Correct. Incremental goal-setting builds professional resilience through achievable milestones.",
+            incorrect:
+              "Evidence indicates that establishing incremental, measurable objectives systematically builds professional resilience.",
+          },
+        },
+        {
+          id: 5,
+          category: "math",
+          question: "Calculate: 25 + 15 = ?",
+          options: [
+            { letter: "A", text: "30", correct: false },
+            { letter: "B", text: "35", correct: false },
+            { letter: "C", text: "40", correct: true },
+            { letter: "D", text: "45", correct: false },
+          ],
+          feedback: {
+            correct: "Correct calculation: 25 + 15 = 40",
+            incorrect:
+              "The correct calculation is 40. Basic arithmetic proficiency supports financial decision-making.",
+          },
+        },
+        {
+          id: 6,
+          category: "math",
+          question: "Determine the product: 12 × 5 = ?",
+          options: [
+            { letter: "A", text: "50", correct: false },
+            { letter: "B", text: "55", correct: false },
+            { letter: "C", text: "60", correct: true },
+            { letter: "D", text: "65", correct: false },
+          ],
+          feedback: {
+            correct: "Correct: 12 × 5 = 60",
+            incorrect:
+              "The correct product is 60. Multiplication skills are fundamental to quantitative analysis.",
+          },
+        },
+        {
+          id: 7,
+          category: "math",
+          question:
+            "A procurement specialist purchases 3 units at KSH 20 each. What is the total expenditure?",
+          options: [
+            { letter: "A", text: "KSH 40", correct: false },
+            { letter: "B", text: "KSH 50", correct: false },
+            { letter: "C", text: "KSH 60", correct: true },
+            { letter: "D", text: "KSH 70", correct: false },
+          ],
+          feedback: {
+            correct: "Correct: 3 × 20 = KSH 60",
+            incorrect:
+              "Total expenditure calculation: 3 items × KSH 20 each = KSH 60",
+          },
+        },
+        {
+          id: 8,
+          category: "business",
+          question:
+            "In financial terminology, how is 'profit' accurately defined?",
+          options: [
+            { letter: "A", text: "Capital depreciation", correct: false },
+            {
+              letter: "B",
+              text: "Revenue remaining after all expenses are deducted",
+              correct: true,
+            },
+            { letter: "C", text: "Cumulative liabilities", correct: false },
+            {
+              letter: "D",
+              text: "Unallocated capital reserves",
+              correct: false,
+            },
+          ],
+          feedback: {
+            correct:
+              "Correct. Profit represents net financial gain after accounting for all operational expenses.",
+            incorrect:
+              "Profit is formally defined as revenue remaining after deducting all business expenses.",
+          },
+        },
+        {
+          id: 9,
+          category: "business",
+          question:
+            "Which definition accurately describes a 'customer' in business contexts?",
+          options: [
+            {
+              letter: "A",
+              text: "An entity that acquires goods or services",
+              correct: true,
+            },
+            {
+              letter: "B",
+              text: "An individual engaging in unauthorized appropriation",
+              correct: false,
+            },
+            {
+              letter: "C",
+              text: "A party declining contractual obligations",
+              correct: false,
+            },
+            { letter: "D", text: "A passive market observer", correct: false },
+          ],
+          feedback: {
+            correct:
+              "Correct. A customer is any entity that acquires goods or services through exchange.",
+            incorrect:
+              "In business terminology, a customer is defined as an entity that acquires goods or services.",
+          },
+        },
+        {
+          id: 10,
+          category: "business",
+          question:
+            "What represents the fundamental requirement for sustainable business success?",
+          options: [
+            {
+              letter: "A",
+              text: "Absence of strategic planning",
+              correct: false,
+            },
+            {
+              letter: "B",
+              text: "Quality offerings and operational consistency",
+              correct: true,
+            },
+            {
+              letter: "C",
+              text: "Minimal operational engagement",
+              correct: false,
+            },
+            { letter: "D", text: "Limited market engagement", correct: false },
+          ],
+          feedback: {
+            correct:
+              "Correct. Sustainable success requires quality offerings and consistent operational execution.",
+            incorrect:
+              "Research indicates sustainable business success fundamentally requires quality offerings and operational consistency.",
+          },
+        },
+      ];
+
+      // Application State
+      const state = {
+        currentQuestionIndex: 0,
+        userAnswers: new Array(CONFIG.TOTAL_QUESTIONS).fill(null),
+        timeRemaining: CONFIG.TIME_LIMIT,
+        timerInterval: null,
+        surveyCompleted: false,
+        lastCompletionTimestamp:
+          localStorage.getItem(`${CONFIG.STORAGE_KEY}_last_completion`) || null,
+      };
+
+      // DOM Elements
+      const elements = {
+        questionsContainer: document.getElementById("questionsContainer"),
+        timer: document.getElementById("timer"),
+        currentQuestion: document.getElementById("currentQuestion"),
+        progressFill: document.getElementById("progressFill"),
+        progressPercent: document.getElementById("progressPercent"),
+        answeredCount: document.getElementById("answeredCount"),
+        prevBtn: document.getElementById("prevBtn"),
+        nextBtn: document.getElementById("nextBtn"),
+        submitBtn: document.getElementById("submitBtn"),
+        resultsDashboard: document.getElementById("resultsDashboard"),
+        earningsAmount: document.getElementById("earningsAmount"),
+        correctCount: document.getElementById("correctCount"),
+        correctDisplay: document.getElementById("correctDisplay"),
+        incorrectDisplay: document.getElementById("incorrectDisplay"),
+        percentageDisplay: document.getElementById("percentageDisplay"),
+        welcomeMessage: document.getElementById("welcomeMessage"),
+        reviewBtn: document.getElementById("reviewBtn"),
+        restartBtn: document.getElementById("restartBtn"),
+      };
+
+      // Initialize Application
+      function initApplication() {
+        renderAllQuestions();
+        updateNavigation();
+        updateHeaderStats();
+        startTimer();
+        checkWelcomeBack();
+      }
+
+      // Render all questions
+      function renderAllQuestions() {
+        let questionsHTML = "";
+
+        surveyQuestions.forEach((question, index) => {
+          const isActive = index === state.currentQuestionIndex;
+          const userAnswer = state.userAnswers[index];
+
+          // Get category styling
+          let categoryClass = "";
+          let categoryText = "";
+          switch (question.category) {
+            case "mental":
+              categoryClass = "category-mental";
+              categoryText = "Mindset";
+              break;
+            case "math":
+              categoryClass = "category-math";
+              categoryText = "Quantitative";
+              break;
+            case "business":
+              categoryClass = "category-business";
+              categoryText = "Business";
+              break;
+          }
+
+          // Generate options HTML
+          let optionsHTML = "";
+          question.options.forEach((option) => {
+            const isSelected = userAnswer === option.letter;
+            let optionClass = "option-card";
+
+            if (isSelected) optionClass += " selected";
+            if (state.surveyCompleted) {
+              if (option.correct) optionClass += " correct";
+              else if (isSelected && !option.correct)
+                optionClass += " incorrect";
+            }
+
+            optionsHTML += `
+                        <div class="${optionClass}" data-index="${index}" data-letter="${option.letter}">
+                            <div class="option-indicator">${option.letter}</div>
+                            <div class="option-text">${option.text}</div>
+                        </div>
+                    `;
+          });
+
+          // Generate feedback if completed
+          let feedbackHTML = "";
+          if (state.surveyCompleted && userAnswer !== null) {
+            const selectedOption = question.options.find(
+              (opt) => opt.letter === userAnswer,
+            );
+            const isCorrect = selectedOption ? selectedOption.correct : false;
+            const feedbackClass = isCorrect
+              ? "feedback-correct"
+              : "feedback-incorrect";
+            const feedbackText = isCorrect
+              ? question.feedback.correct
+              : question.feedback.incorrect;
+
+            feedbackHTML = `<div class="feedback-box ${feedbackClass}">${feedbackText}</div>`;
+          }
+
+          questionsHTML += `
+                    <div class="question-card ${isActive ? "active" : ""}" id="question-${index}">
+                        <div class="question-header">
+                            <div class="question-meta">
+                                <div class="question-number">${index + 1}</div>
+                                <div class="question-category ${categoryClass}">${categoryText}</div>
+                            </div>
+                            <div class="question-value">
+                                <i class="fas fa-coins"></i>
+                                KSH ${CONFIG.QUESTION_VALUE}
+                            </div>
+                        </div>
+                        <div class="question-text">${question.question}</div>
+                        <div class="options-grid">
+                            ${optionsHTML}
+                        </div>
+                        ${feedbackHTML}
+                    </div>
+                `;
+        });
+
+        elements.questionsContainer.innerHTML = questionsHTML;
+
+        // Add event listeners to options
+        document.querySelectorAll(".option-card").forEach((option) => {
+          option.addEventListener("click", () => {
+            if (state.surveyCompleted) return;
+
+            const questionIndex = parseInt(option.getAttribute("data-index"));
+            const selectedLetter = option.getAttribute("data-letter");
+
+            // Update answer
+            state.userAnswers[questionIndex] = selectedLetter;
+
+            // Update UI
+            updateQuestionSelection(questionIndex, selectedLetter);
+            updateHeaderStats();
+            updateNavigation();
+          });
+        });
+
+        // Update progress
+        updateProgress();
+
+        // Scroll to active question if not completed
+        if (!state.surveyCompleted) {
+          setTimeout(() => {
+            document
+              .getElementById(`question-${state.currentQuestionIndex}`)
+              .scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+          }, 100);
+        }
+      }
+
+      // Update question selection UI
+      function updateQuestionSelection(questionIndex, selectedLetter) {
+        const questionElement = document.getElementById(
+          `question-${questionIndex}`,
+        );
+        const options = questionElement.querySelectorAll(".option-card");
+
+        options.forEach((opt) => {
+          opt.classList.remove("selected");
+          const letter = opt.getAttribute("data-letter");
+          if (letter === selectedLetter) {
+            opt.classList.add("selected");
+          }
+        });
+      }
+
+      // Update header statistics
+      function updateHeaderStats() {
+        const answered = state.userAnswers.filter(
+          (answer) => answer !== null,
+        ).length;
+        elements.answeredCount.textContent = answered;
+      }
+
+      // Update progress display
+      function updateProgress() {
+        const progress =
+          ((state.currentQuestionIndex + 1) / CONFIG.TOTAL_QUESTIONS) * 100;
+        elements.progressFill.style.width = `${progress}%`;
+        elements.progressPercent.textContent = `${Math.round(progress)}%`;
+        elements.currentQuestion.textContent = state.currentQuestionIndex + 1;
+      }
+
+      // Update navigation buttons
+      function updateNavigation() {
+        // Previous button
+        elements.prevBtn.disabled = state.currentQuestionIndex === 0;
+
+        // Next/Submit buttons
+        if (state.currentQuestionIndex === CONFIG.TOTAL_QUESTIONS - 1) {
+          elements.nextBtn.style.display = "none";
+          elements.submitBtn.style.display = "flex";
+
+          // Enable submit only if all questions answered
+          const allAnswered = state.userAnswers.every(
+            (answer) => answer !== null,
+          );
+          elements.submitBtn.disabled = !allAnswered;
+        } else {
+          elements.nextBtn.style.display = "flex";
+          elements.submitBtn.style.display = "none";
+        }
+
+        // Enable next only if current question answered
+        elements.nextBtn.disabled =
+          state.userAnswers[state.currentQuestionIndex] === null;
+      }
+
+      // Timer functions
+      function startTimer() {
+        updateTimerDisplay();
+        state.timerInterval = setInterval(() => {
+          state.timeRemaining--;
+          updateTimerDisplay();
+
+          if (state.timeRemaining <= 0) {
+            clearInterval(state.timerInterval);
+            if (!state.surveyCompleted) {
+              autoSubmitSurvey();
+            }
+          }
+        }, 1000);
+      }
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(state.timeRemaining / 60);
+        const seconds = state.timeRemaining % 60;
+        elements.timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+        // Visual warning for low time
+        if (state.timeRemaining <= 30) {
+          elements.timer.style.color = "var(--danger-color)";
+          elements.timer.style.borderColor = "var(--danger-color)";
+        }
+      }
+
+      // Calculate results
+      function calculateResults() {
+        let correct = 0;
+        let incorrect = 0;
+
+        state.userAnswers.forEach((answer, index) => {
+          if (answer !== null) {
+            const question = surveyQuestions[index];
+            const selectedOption = question.options.find(
+              (opt) => opt.letter === answer,
+            );
+            if (selectedOption && selectedOption.correct) {
+              correct++;
+            } else {
+              incorrect++;
+            }
+          } else {
+            incorrect++; // Unanswered questions count as incorrect
+          }
+        });
+
+        const earnings = correct * CONFIG.QUESTION_VALUE;
+        const percentage = Math.round((correct / CONFIG.TOTAL_QUESTIONS) * 100);
+
+        return { correct, incorrect, earnings, percentage };
+      }
+
+      // Show results dashboard
+      function showResults() {
+        state.surveyCompleted = true;
+        clearInterval(state.timerInterval);
+
+        // Calculate results
+        const results = calculateResults();
+
+        // Update results display
+        elements.earningsAmount.textContent = `KSH ${results.earnings}`;
+        elements.correctCount.textContent = results.correct;
+        elements.correctDisplay.textContent = results.correct;
+        elements.incorrectDisplay.textContent = results.incorrect;
+        elements.percentageDisplay.textContent = `${results.percentage}%`;
+
+        // Store completion time
+        localStorage.setItem(
+          `${CONFIG.STORAGE_KEY}_last_completion`,
+          Date.now().toString(),
+        );
+
+        // Show dashboard
+        document.querySelector(".questions-container").style.display = "none";
+        document.querySelector(".survey-navigation").style.display = "none";
+        elements.resultsDashboard.style.display = "block";
+
+        // Re-render questions with feedback
+        renderAllQuestions();
+
+        // Show welcome message if applicable
+        checkWelcomeBack();
+      }
+
+      // Auto-submit when time expires
+      function autoSubmitSurvey() {
+        // Fill unanswered questions with empty values
+        state.userAnswers = state.userAnswers.map((answer) =>
+          answer === null ? "" : answer,
+        );
+        showResults();
+      }
+
+      // Check and show welcome back message
+      function checkWelcomeBack() {
+        if (!state.lastCompletionTimestamp) return;
+
+        const oneHourMs = 60 * 60 * 1000;
+        const timeSinceLast =
+          Date.now() - parseInt(state.lastCompletionTimestamp);
+
+        if (timeSinceLast >= oneHourMs) {
+          setTimeout(() => {
+            elements.welcomeMessage.style.display = "block";
+          }, 1000);
+        }
+      }
+
+      // Event Listeners
+      elements.prevBtn.addEventListener("click", () => {
+        if (state.currentQuestionIndex > 0) {
+          state.currentQuestionIndex--;
+          renderAllQuestions();
+          updateNavigation();
+        }
+      });
+
+      elements.nextBtn.addEventListener("click", () => {
+        if (state.currentQuestionIndex < CONFIG.TOTAL_QUESTIONS - 1) {
+          state.currentQuestionIndex++;
+          renderAllQuestions();
+          updateNavigation();
+        }
+      });
+
+      elements.submitBtn.addEventListener("click", () => {
+        showResults();
+      });
+
+      elements.reviewBtn.addEventListener("click", () => {
+        elements.resultsDashboard.style.display = "none";
+        document.querySelector(".questions-container").style.display = "block";
+        document.querySelector(".questions-container").scrollTop = 0;
+      });
+
+      elements.restartBtn.addEventListener("click", () => {
+        // Reset state
+        state.currentQuestionIndex = 0;
+        state.userAnswers = new Array(CONFIG.TOTAL_QUESTIONS).fill(null);
+        state.timeRemaining = CONFIG.TIME_LIMIT;
+        state.surveyCompleted = false;
+
+        // Reset UI
+        elements.resultsDashboard.style.display = "none";
+        document.querySelector(".questions-container").style.display = "block";
+        document.querySelector(".survey-navigation").style.display = "flex";
+        elements.welcomeMessage.style.display = "none";
+
+        // Reset timer display
+        elements.timer.style.color = "var(--danger-color)";
+        elements.timer.style.borderColor = "var(--danger-color)";
+
+        // Reinitialize
+        initApplication();
+      });
+
+      // Initialize on load
+      document.addEventListener("DOMContentLoaded", initApplication);
+    </script>
+  </body>
+</html>
