@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>MULASTAR | Professional Assessment</title>
+    <title>MULASTAR | Assessment</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -27,7 +27,7 @@
         --border-radius: 12px;
         --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        --mobile-padding: 16px;
+        --mobile-padding: 12px;
       }
 
       * {
@@ -69,9 +69,11 @@
         box-shadow: var(--box-shadow);
         overflow: hidden;
         min-height: calc(100vh - 2 * var(--mobile-padding));
+        display: flex;
+        flex-direction: column;
       }
 
-      /* Header - Mobile Optimized */
+      /* Header - Mobile Optimized - SMALLER */
       .dashboard-header {
         background: linear-gradient(
           135deg,
@@ -79,90 +81,49 @@
           #1a2530 100%
         );
         color: white;
-        padding: 20px var(--mobile-padding);
+        padding: 12px var(--mobile-padding);
         position: relative;
+        flex-shrink: 0;
       }
 
       .mobile-header-top {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 15px;
       }
 
       .branding {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
       }
 
       .logo {
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         background: var(--accent-color);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 800;
         flex-shrink: 0;
       }
 
       .branding-text h1 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 700;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
         line-height: 1.2;
       }
 
       .branding-text p {
-        font-size: 12px;
+        font-size: 11px;
         opacity: 0.9;
       }
 
-      .mobile-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      .stat-item-mobile {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        padding: 12px 8px;
-        text-align: center;
-      }
-
-      .stat-value-mobile {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 4px;
-      }
-
-      .stat-label-mobile {
-        font-size: 11px;
-        opacity: 0.8;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-
-      /* Timer Section - Mobile Optimized */
-      .timer-section {
-        background: #f8f9fa;
-        padding: 16px var(--mobile-padding);
-        border-bottom: 1px solid #eaeaea;
-      }
-
       .timer-display-mobile {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 12px;
-      }
-
-      .timer-left {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -170,138 +131,57 @@
 
       .timer-icon {
         color: var(--danger-color);
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .timer {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 700;
         color: var(--danger-color);
         background: white;
-        padding: 6px 16px;
+        padding: 4px 12px;
         border-radius: 50px;
         border: 2px solid var(--danger-color);
-        min-width: 90px;
+        min-width: 70px;
         text-align: center;
       }
 
-      .earnings-badge {
-        background: linear-gradient(90deg, #f39c12, #e67e22);
-        color: white;
-        padding: 8px 14px;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 13px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .progress-container-mobile {
-        width: 100%;
-      }
-
-      .progress-info-mobile {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
-        font-size: 13px;
-        font-weight: 600;
-      }
-
-      .progress-bar-mobile {
-        height: 6px;
-        background-color: #e9ecef;
-        border-radius: 3px;
-        overflow: hidden;
-      }
-
-      .progress-fill-mobile {
-        height: 100%;
-        background: linear-gradient(90deg, var(--accent-color), #27ae60);
-        width: 10%;
-        border-radius: 3px;
-        transition: width 0.5s ease;
-      }
-
-      /* Questions Container - Mobile Optimized */
+      /* Questions Container - Better mobile fit */
       .questions-container {
-        padding: 16px var(--mobile-padding);
-        max-height: calc(100vh - 400px);
+        padding: 12px var(--mobile-padding);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        flex: 1;
+        max-height: calc(100vh - 160px);
       }
 
-      /* Mobile Question Navigation */
-      .question-nav-mobile {
-        display: flex;
-        overflow-x: auto;
-        padding: 12px 0;
-        margin-bottom: 16px;
-        gap: 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-
-      .question-nav-mobile::-webkit-scrollbar {
-        display: none;
-      }
-
-      .question-nav-item {
-        flex-shrink: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 14px;
-        cursor: pointer;
-        transition: var(--transition);
-        background: #e9ecef;
-        color: #666;
-      }
-
-      .question-nav-item.active {
-        background: var(--secondary-color);
-        color: white;
-        transform: scale(1.1);
-      }
-
-      .question-nav-item.answered {
-        background: #c8e6c9;
-        color: #2e7d32;
-      }
-
-      /* Question Cards - Mobile Optimized */
+      /* Question Cards */
       .question-card-mobile {
         background: white;
         border-radius: var(--border-radius);
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 16px;
+        margin-bottom: 16px;
         border: 1px solid #eaeaea;
         transition: var(--transition);
       }
 
-      .question-card-mobile.active {
-        border-color: var(--secondary-color);
-        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+      .question-card-mobile:last-child {
+        margin-bottom: 70px;
       }
 
       .question-header-mobile {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 16px;
-        padding-bottom: 12px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
         border-bottom: 1px solid #f0f0f0;
       }
 
       .question-meta-mobile {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
       }
 
@@ -309,142 +189,147 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         background: var(--primary-color);
         color: white;
         border-radius: 50%;
         font-weight: 700;
-        font-size: 14px;
-      }
-
-      .question-category-mobile {
-        padding: 5px 12px;
-        border-radius: 50px;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-
-      .category-mental {
-        background: #e3f2fd;
-        color: #1565c0;
-      }
-
-      .category-math {
-        background: #f3e5f5;
-        color: #7b1fa2;
-      }
-
-      .category-business {
-        background: #e8f5e9;
-        color: #2e7d32;
+        font-size: 13px;
       }
 
       .question-value-mobile {
         background: linear-gradient(90deg, #f39c12, #e67e22);
         color: white;
-        padding: 6px 12px;
+        padding: 4px 10px;
         border-radius: 50px;
         font-weight: 700;
-        font-size: 12px;
+        font-size: 11px;
         display: flex;
         align-items: center;
         gap: 4px;
       }
 
+      /* QUESTION TEXT */
       .question-text-mobile {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 600;
         color: var(--dark-color);
-        margin-bottom: 20px;
+        margin-bottom: 16px;
         line-height: 1.4;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #f0f0f0;
       }
 
-      /* Mobile Options - Single Column */
+      /* OPTIONS */
       .options-container-mobile {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 15px;
+        gap: 8px;
+        margin-bottom: 12px;
       }
 
-      .option-card-mobile {
-        padding: 16px;
-        border: 2px solid #e0e0e0;
-        border-radius: var(--border-radius);
-        cursor: pointer;
-        transition: var(--transition);
+      .option-item-mobile {
         display: flex;
         align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        transition: var(--transition);
       }
 
-      .option-card-mobile:active {
-        transform: scale(0.98);
+      .option-item-mobile:last-child {
+        border-bottom: none;
       }
 
-      .option-card-mobile:hover {
-        border-color: var(--secondary-color);
+      .option-item-mobile:hover {
         background-color: #f8fafc;
       }
 
-      .option-card-mobile.selected {
-        border-color: var(--secondary-color);
-        background-color: #e3f2fd;
-      }
-
-      .option-card-mobile.correct {
-        border-color: var(--accent-color);
-        background-color: #d4edda;
-      }
-
-      .option-card-mobile.incorrect {
-        border-color: var(--danger-color);
-        background-color: #f8d7da;
-      }
-
-      .option-indicator-mobile {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: #f0f0f0;
-        color: #666;
+      /* CHECKBOX STYLING */
+      .checkbox-container {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-right: 12px;
-        font-weight: 700;
-        font-size: 14px;
+        width: 100%;
+      }
+
+      .checkbox-input {
+        display: none;
+      }
+
+      .checkbox-custom {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        margin-right: 10px;
+        position: relative;
         flex-shrink: 0;
+        transition: var(--transition);
       }
 
-      .selected .option-indicator-mobile {
-        background: var(--secondary-color);
-        color: white;
+      .checkbox-input:checked + .checkbox-custom {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
       }
 
-      .correct .option-indicator-mobile {
-        background: var(--accent-color);
+      .checkbox-input:checked + .checkbox-custom::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         color: white;
+        font-size: 11px;
+        font-weight: bold;
       }
 
-      .incorrect .option-indicator-mobile {
-        background: var(--danger-color);
-        color: white;
+      .option-letter-mobile {
+        font-weight: 600;
+        margin-right: 6px;
+        color: var(--primary-color);
+        min-width: 18px;
+        font-size: 14px;
       }
 
       .option-text-mobile {
-        font-size: 15px;
+        font-size: 14px;
         flex-grow: 1;
         line-height: 1.4;
+        color: #333;
+      }
+
+      .option-item-mobile.selected .checkbox-custom {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+      }
+
+      .option-item-mobile.selected .checkbox-custom::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .option-item-mobile.correct .checkbox-custom {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+      }
+
+      .option-item-mobile.incorrect .checkbox-custom {
+        background-color: var(--danger-color);
+        border-color: var(--danger-color);
       }
 
       .feedback-box-mobile {
-        margin-top: 12px;
-        padding: 12px;
-        border-radius: 8px;
-        font-size: 14px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 13px;
         display: none;
         animation: fadeIn 0.5s ease;
       }
@@ -472,36 +357,40 @@
         border-left: 4px solid var(--danger-color);
       }
 
-      /* Mobile Navigation Buttons */
+      /* Submit Button - Smaller */
       .survey-navigation-mobile {
-        padding: 16px var(--mobile-padding);
+        padding: 12px var(--mobile-padding);
         border-top: 1px solid #eaeaea;
         background: #f8f9fa;
-        position: sticky;
-        bottom: 0;
-        z-index: 100;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        position: fixed;
+        bottom: var(--mobile-padding);
+        left: var(--mobile-padding);
+        right: var(--mobile-padding);
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: var(--border-radius);
+        margin: 0;
       }
 
       .nav-buttons-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        display: flex;
+        justify-content: center;
       }
 
       .nav-button-mobile {
-        padding: 14px;
+        padding: 12px 20px;
         border: none;
         border-radius: var(--border-radius);
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 600;
         cursor: pointer;
         transition: var(--transition);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        min-height: 48px;
+        gap: 6px;
+        min-height: 42px;
+        flex: 1;
       }
 
       .nav-button-mobile:active {
@@ -539,7 +428,7 @@
         background: var(--accent-color);
         color: white;
         border: 2px solid var(--accent-color);
-        grid-column: span 2;
+        flex: 1;
       }
 
       .button-success-mobile:active:not(:disabled) {
@@ -547,66 +436,68 @@
         border-color: #27ae60;
       }
 
-      /* Mobile Results Dashboard */
+      /* Results Dashboard */
       .results-dashboard-mobile {
-        padding: 20px var(--mobile-padding);
+        padding: 16px var(--mobile-padding);
         display: none;
+        flex: 1;
+        overflow-y: auto;
       }
 
       .dashboard-header-results-mobile {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 24px;
       }
 
       .dashboard-header-results-mobile h2 {
-        font-size: 24px;
+        font-size: 20px;
         color: var(--primary-color);
         margin-bottom: 8px;
       }
 
       .dashboard-header-results-mobile p {
         color: #666;
-        font-size: 16px;
+        font-size: 14px;
       }
 
       .earnings-card-mobile {
         background: linear-gradient(135deg, #2ecc71, #27ae60);
         color: white;
         border-radius: var(--border-radius);
-        padding: 30px 20px;
-        margin-bottom: 24px;
+        padding: 20px 16px;
+        margin-bottom: 20px;
         text-align: center;
         box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
       }
 
       .earnings-label-mobile {
-        font-size: 16px;
-        margin-bottom: 12px;
+        font-size: 14px;
+        margin-bottom: 8px;
         opacity: 0.9;
       }
 
       .earnings-amount-mobile {
-        font-size: 48px;
+        font-size: 36px;
         font-weight: 800;
         margin-bottom: 8px;
       }
 
       .earnings-details-mobile {
-        font-size: 14px;
+        font-size: 12px;
         opacity: 0.9;
       }
 
       .score-breakdown-mobile {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        margin-bottom: 30px;
+        gap: 10px;
+        margin-bottom: 24px;
       }
 
       .breakdown-card-mobile {
         background: white;
         border-radius: var(--border-radius);
-        padding: 20px 12px;
+        padding: 16px 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         text-align: center;
         border-top: 4px solid var(--secondary-color);
@@ -625,8 +516,8 @@
       }
 
       .breakdown-icon-mobile {
-        font-size: 32px;
-        margin-bottom: 12px;
+        font-size: 24px;
+        margin-bottom: 8px;
         color: var(--secondary-color);
       }
 
@@ -643,21 +534,21 @@
       }
 
       .breakdown-value-mobile {
-        font-size: 28px;
+        font-size: 22px;
         font-weight: 800;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
       }
 
       .breakdown-label-mobile {
-        font-size: 12px;
+        font-size: 11px;
         color: #666;
       }
 
       .welcome-message-mobile {
         background: linear-gradient(135deg, #e3f2fd, #bbdefb);
         border-radius: var(--border-radius);
-        padding: 20px;
-        margin: 24px 0;
+        padding: 16px;
+        margin: 20px 0;
         display: none;
         animation: fadeIn 1s ease;
         border-left: 5px solid var(--secondary-color);
@@ -666,22 +557,22 @@
       .welcome-header-mobile {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 12px;
+        gap: 10px;
+        margin-bottom: 8px;
       }
 
       .welcome-icon-mobile {
-        font-size: 28px;
+        font-size: 22px;
         color: var(--secondary-color);
       }
 
       .welcome-message-mobile h3 {
-        font-size: 20px;
+        font-size: 18px;
         color: var(--primary-color);
       }
 
       .welcome-message-mobile p {
-        font-size: 15px;
+        font-size: 14px;
         color: #2c3e50;
         line-height: 1.5;
       }
@@ -689,8 +580,8 @@
       .action-buttons-mobile {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-top: 30px;
+        gap: 10px;
+        margin-top: 24px;
       }
 
       .button-icon-mobile {
@@ -698,16 +589,19 @@
       }
 
       /* Mobile Scrollbar */
-      .questions-container::-webkit-scrollbar {
-        width: 4px;
+      .questions-container::-webkit-scrollbar,
+      .results-dashboard-mobile::-webkit-scrollbar {
+        width: 3px;
       }
 
-      .questions-container::-webkit-scrollbar-track {
+      .questions-container::-webkit-scrollbar-track,
+      .results-dashboard-mobile::-webkit-scrollbar-track {
         background: #f1f1f1;
         border-radius: 10px;
       }
 
-      .questions-container::-webkit-scrollbar-thumb {
+      .questions-container::-webkit-scrollbar-thumb,
+      .results-dashboard-mobile::-webkit-scrollbar-thumb {
         background: #c1c1c1;
         border-radius: 10px;
       }
@@ -715,11 +609,11 @@
       /* Tablet and Desktop Responsive */
       @media (min-width: 768px) {
         :root {
-          --mobile-padding: 24px;
+          --mobile-padding: 16px;
         }
 
         body {
-          padding: 20px;
+          padding: 16px;
         }
 
         .professional-container {
@@ -728,66 +622,27 @@
         }
 
         .dashboard-header {
-          padding: 25px 30px;
+          padding: 16px 20px;
         }
 
         .branding-text h1 {
-          font-size: 24px;
+          font-size: 20px;
         }
 
         .question-text-mobile {
-          font-size: 18px;
-        }
-
-        .options-container-mobile {
-          grid-template-columns: repeat(2, 1fr);
-          display: grid;
+          font-size: 16px;
         }
 
         .nav-buttons-container {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .nav-button-mobile {
-          min-width: 150px;
-        }
-
-        .button-success-mobile {
-          grid-column: auto;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .professional-container {
-          max-width: 1000px;
-        }
-
-        .dashboard-header {
-          padding: 30px 40px;
-        }
-
-        .timer-section {
-          padding: 20px 40px;
-        }
-
-        .questions-container {
-          padding: 30px 40px;
-        }
-
-        .survey-navigation-mobile {
-          padding: 20px 40px;
-        }
-
-        .results-dashboard-mobile {
-          padding: 40px;
+          max-width: 400px;
+          margin: 0 auto;
         }
       }
 
       /* Small Phone Optimization */
       @media (max-width: 360px) {
         :root {
-          --mobile-padding: 12px;
+          --mobile-padding: 10px;
         }
 
         html {
@@ -795,29 +650,37 @@
         }
 
         .logo {
-          width: 40px;
-          height: 40px;
-          font-size: 18px;
-        }
-
-        .branding-text h1 {
-          font-size: 18px;
-        }
-
-        .stat-item-mobile {
-          padding: 10px 6px;
-        }
-
-        .stat-value-mobile {
+          width: 32px;
+          height: 32px;
           font-size: 16px;
         }
 
+        .branding-text h1 {
+          font-size: 16px;
+        }
+
+        .branding-text p {
+          font-size: 10px;
+        }
+
+        .timer {
+          font-size: 14px;
+          min-width: 60px;
+          padding: 3px 8px;
+        }
+
         .question-text-mobile {
-          font-size: 15px;
+          font-size: 14px;
         }
 
         .option-text-mobile {
-          font-size: 14px;
+          font-size: 13px;
+        }
+
+        .nav-button-mobile {
+          padding: 10px 16px;
+          font-size: 13px;
+          min-height: 38px;
         }
       }
 
@@ -832,98 +695,52 @@
             env(safe-area-inset-bottom)
           );
         }
+
+        .survey-navigation-mobile {
+          bottom: max(var(--mobile-padding), env(safe-area-inset-bottom));
+          left: max(var(--mobile-padding), env(safe-area-inset-left));
+          right: max(var(--mobile-padding), env(safe-area-inset-right));
+        }
       }
     </style>
   </head>
   <body>
     <div class="professional-container">
-      <!-- Mobile Optimized Header -->
+      <!-- Smaller Mobile Header -->
       <header class="dashboard-header">
         <div class="mobile-header-top">
           <div class="branding">
             <div class="logo">M</div>
             <div class="branding-text">
               <h1>MULASTAR</h1>
-              <p>Professional Assessment</p>
+              <p>Assessment</p>
             </div>
           </div>
-        </div>
-
-        <div class="mobile-stats">
-          <div class="stat-item-mobile">
-            <div class="stat-value-mobile" id="totalQuestions">10</div>
-            <div class="stat-label-mobile">Questions</div>
-          </div>
-          <div class="stat-item-mobile">
-            <div class="stat-value-mobile">
-              KSH <span id="potentialEarnings">100</span>
-            </div>
-            <div class="stat-label-mobile">Potential</div>
-          </div>
-          <div class="stat-item-mobile">
-            <div class="stat-value-mobile" id="answeredCount">0</div>
-            <div class="stat-label-mobile">Answered</div>
+          <div class="timer-display-mobile">
+            <i class="fas fa-clock timer-icon"></i>
+            <div class="timer" id="timer">03:00</div>
           </div>
         </div>
       </header>
 
-      <!-- Mobile Timer Section -->
-      <section class="timer-section">
-        <div class="timer-display-mobile">
-          <div class="timer-left">
-            <i class="fas fa-clock timer-icon"></i>
-            <div class="timer" id="timer">03:00</div>
-          </div>
-          <div class="earnings-badge">
-            <i class="fas fa-coins"></i>
-            KSH 10/Q
-          </div>
-        </div>
+      <!-- Questions Container -->
+      <main class="questions-container" id="questionsContainer"></main>
 
-        <div class="progress-container-mobile">
-          <div class="progress-info-mobile">
-            <span>Q<span id="currentQuestion">1</span>/10</span>
-            <span><span id="progressPercent">10%</span></span>
-          </div>
-          <div class="progress-bar-mobile">
-            <div class="progress-fill-mobile" id="progressFill"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Mobile Question Navigation -->
-      <div class="question-nav-mobile" id="questionNav">
-        <!-- Dynamic navigation items will be added here -->
-      </div>
-
-      <!-- Mobile Questions Container -->
-      <main class="questions-container" id="questionsContainer">
-        <!-- Questions will be dynamically inserted here -->
-      </main>
-
-      <!-- Mobile Navigation -->
+      <!-- Submit Button -->
       <section class="survey-navigation-mobile">
         <div class="nav-buttons-container">
-          <button class="nav-button-mobile button-outline-mobile" id="prevBtn">
-            <i class="fas fa-arrow-left button-icon-mobile"></i>
-            <span class="button-text">Previous</span>
-          </button>
-          <button class="nav-button-mobile button-primary-mobile" id="nextBtn">
-            <span class="button-text">Next</span>
-            <i class="fas fa-arrow-right button-icon-mobile"></i>
-          </button>
           <button
             class="nav-button-mobile button-success-mobile"
             id="submitBtn"
-            style="display: none"
+            disabled
           >
             <i class="fas fa-paper-plane button-icon-mobile"></i>
-            <span class="button-text">Submit Survey</span>
+            <span class="button-text">Submit Assessment</span>
           </button>
         </div>
       </section>
 
-      <!-- Mobile Results Dashboard -->
+      <!-- Results Dashboard -->
       <section class="results-dashboard-mobile" id="resultsDashboard">
         <div class="dashboard-header-results-mobile">
           <h2>Assessment Completed</h2>
@@ -987,12 +804,12 @@
     </div>
 
     <script>
-      // Mobile-optimized survey configuration
+      // Configuration
       const CONFIG = {
         QUESTION_VALUE: 10,
         TOTAL_QUESTIONS: 10,
         TIME_LIMIT: 180,
-        STORAGE_KEY: "mulastar_mobile_survey",
+        STORAGE_KEY: "mulastar_assessment",
       };
 
       // Survey questions
@@ -1048,37 +865,60 @@
         },
         {
           id: 4,
-          category: "mental",
-          question: "Which is a good habit for mental strength?",
+          category: "general",
+          question: "Who is Africa's longest serving leader?",
           options: [
-            { letter: "A", text: "Negative self-talk", correct: false },
-            { letter: "B", text: "Setting small goals", correct: true },
-            { letter: "C", text: "Avoiding challenges", correct: false },
-            { letter: "D", text: "Overthinking", correct: false },
+            { letter: "A", text: "Jomo Kenyatta of Kenya", correct: false },
+            {
+              letter: "B",
+              text: "Nelson Mandela of South Africa",
+              correct: false,
+            },
+            { letter: "C", text: "Robert Mugabe of Zimbabwe", correct: false },
+            {
+              letter: "D",
+              text: "Teodoro Obiang of Equatorial Guinea",
+              correct: true,
+            },
           ],
           feedback: {
-            correct: "Correct. Small goals build confidence over time.",
+            correct: "Correct. Teodoro Obiang has been in power since 1979.",
             incorrect:
-              "Setting small goals builds mental strength incrementally.",
+              "Incorrect. Teodoro Obiang is Africa's longest serving leader.",
           },
         },
         {
           id: 5,
-          category: "math",
-          question: "What is 25 + 15?",
+          category: "general",
+          question: "Which is the current education system in Kenya?",
           options: [
-            { letter: "A", text: "30", correct: false },
-            { letter: "B", text: "35", correct: false },
-            { letter: "C", text: "40", correct: true },
-            { letter: "D", text: "45", correct: false },
+            { letter: "A", text: "2-4-4-3-3", correct: false },
+            { letter: "B", text: "7-5-3", correct: false },
+            { letter: "C", text: "8-4-4", correct: false },
+            { letter: "D", text: "8-5-4", correct: true },
           ],
           feedback: {
-            correct: "Correct: 25 + 15 = 40",
-            incorrect: "The correct answer is 40.",
+            correct: "Correct. Kenya uses the 8-5-4 education system.",
+            incorrect: "Incorrect. Kenya uses the 8-5-4 education system.",
           },
         },
         {
           id: 6,
+          category: "general",
+          question: "The study of earthquakes and the waves generated by them",
+          options: [
+            { letter: "A", text: "Seismology", correct: true },
+            { letter: "B", text: "All of the above", correct: false },
+            { letter: "C", text: "Geomorphology", correct: false },
+            { letter: "D", text: "None of the above", correct: false },
+          ],
+          feedback: {
+            correct: "Correct. Seismology is the study of earthquakes.",
+            incorrect: "Incorrect. Seismology is the study of earthquakes.",
+          },
+        },
+        {
+          id: 7,
           category: "math",
           question: "What is 12 × 5?",
           options: [
@@ -1090,21 +930,6 @@
           feedback: {
             correct: "Correct: 12 × 5 = 60",
             incorrect: "The correct answer is 60.",
-          },
-        },
-        {
-          id: 7,
-          category: "math",
-          question: "3 items costing KSH 20 each total:",
-          options: [
-            { letter: "A", text: "KSH 40", correct: false },
-            { letter: "B", text: "KSH 50", correct: false },
-            { letter: "C", text: "KSH 60", correct: true },
-            { letter: "D", text: "KSH 70", correct: false },
-          ],
-          feedback: {
-            correct: "Correct: 3 × 20 = KSH 60",
-            incorrect: "Total is KSH 60 (3 × 20).",
           },
         },
         {
@@ -1156,7 +981,6 @@
 
       // Application State
       const state = {
-        currentQuestionIndex: 0,
         userAnswers: new Array(CONFIG.TOTAL_QUESTIONS).fill(null),
         timeRemaining: CONFIG.TIME_LIMIT,
         timerInterval: null,
@@ -1168,14 +992,7 @@
       // DOM Elements
       const elements = {
         questionsContainer: document.getElementById("questionsContainer"),
-        questionNav: document.getElementById("questionNav"),
         timer: document.getElementById("timer"),
-        currentQuestion: document.getElementById("currentQuestion"),
-        progressFill: document.getElementById("progressFill"),
-        progressPercent: document.getElementById("progressPercent"),
-        answeredCount: document.getElementById("answeredCount"),
-        prevBtn: document.getElementById("prevBtn"),
-        nextBtn: document.getElementById("nextBtn"),
         submitBtn: document.getElementById("submitBtn"),
         resultsDashboard: document.getElementById("resultsDashboard"),
         earningsAmount: document.getElementById("earningsAmount"),
@@ -1188,251 +1005,141 @@
         restartBtn: document.getElementById("restartBtn"),
       };
 
-      // Initialize Mobile Application
-      function initMobileApp() {
-        renderQuestionNavigation();
-        renderCurrentQuestion();
-        updateMobileStats();
-        startMobileTimer();
-        checkMobileWelcomeBack();
+      // Initialize Application
+      function initApp() {
+        renderAllQuestions();
+        startTimer();
+        checkWelcomeBack();
+        updateSubmitButton();
       }
 
-      // Render question navigation dots
-      function renderQuestionNavigation() {
-        let navHTML = "";
+      // Render all questions
+      function renderAllQuestions() {
+        let html = "";
 
-        for (let i = 0; i < CONFIG.TOTAL_QUESTIONS; i++) {
-          const isActive = i === state.currentQuestionIndex;
-          const isAnswered = state.userAnswers[i] !== null;
+        surveyQuestions.forEach((question, index) => {
+          const userAnswer = state.userAnswers[index];
+          let optionsHTML = "";
 
-          let navClass = "question-nav-item";
-          if (isActive) navClass += " active";
-          if (isAnswered) navClass += " answered";
+          question.options.forEach((option) => {
+            const isSelected = userAnswer === option.letter;
+            let optionClass = "option-item-mobile";
+            if (isSelected) optionClass += " selected";
+            if (state.surveyCompleted) {
+              if (option.correct) optionClass += " correct";
+              else if (isSelected && !option.correct)
+                optionClass += " incorrect";
+            }
 
-          navHTML += `<div class="${navClass}" data-index="${i}">${i + 1}</div>`;
-        }
-
-        elements.questionNav.innerHTML = navHTML;
-
-        // Add click event listeners
-        document.querySelectorAll(".question-nav-item").forEach((item) => {
-          item.addEventListener("click", function () {
-            const index = parseInt(this.getAttribute("data-index"));
-            state.currentQuestionIndex = index;
-            renderCurrentQuestion();
-            updateQuestionNavigation();
+            optionsHTML += `
+              <div class="${optionClass}" data-letter="${option.letter}" data-question="${index}">
+                <label class="checkbox-container">
+                  <input type="radio" name="question-${question.id}" value="${option.letter}" 
+                    class="checkbox-input" ${isSelected ? "checked" : ""} ${state.surveyCompleted ? "disabled" : ""}>
+                  <div class="checkbox-custom"></div>
+                  <div class="option-letter-mobile">${option.letter}.</div>
+                  <div class="option-text-mobile">${option.text}</div>
+                </label>
+              </div>
+            `;
           });
-        });
-      }
 
-      // Update question navigation highlights
-      function updateQuestionNavigation() {
-        document
-          .querySelectorAll(".question-nav-item")
-          .forEach((item, index) => {
-            const isActive = index === state.currentQuestionIndex;
-            const isAnswered = state.userAnswers[index] !== null;
-
-            item.classList.toggle("active", isActive);
-            item.classList.toggle("answered", isAnswered);
-          });
-      }
-
-      // Render current question
-      function renderCurrentQuestion() {
-        const question = surveyQuestions[state.currentQuestionIndex];
-        const userAnswer = state.userAnswers[state.currentQuestionIndex];
-
-        // Get category styling
-        let categoryClass = "";
-        let categoryText = "";
-        switch (question.category) {
-          case "mental":
-            categoryClass = "category-mental";
-            categoryText = "Mindset";
-            break;
-          case "math":
-            categoryClass = "category-math";
-            categoryText = "Math";
-            break;
-          case "business":
-            categoryClass = "category-business";
-            categoryText = "Business";
-            break;
-        }
-
-        // Generate options HTML
-        let optionsHTML = "";
-        question.options.forEach((option) => {
-          const isSelected = userAnswer === option.letter;
-          let optionClass = "option-card-mobile";
-
-          if (isSelected) optionClass += " selected";
-          if (state.surveyCompleted) {
-            if (option.correct) optionClass += " correct";
-            else if (isSelected && !option.correct) optionClass += " incorrect";
+          // Feedback if completed
+          let feedbackHTML = "";
+          if (state.surveyCompleted && userAnswer !== null) {
+            const selectedOption = question.options.find(
+              (opt) => opt.letter === userAnswer,
+            );
+            const isCorrect = selectedOption ? selectedOption.correct : false;
+            const feedbackClass = isCorrect
+              ? "feedback-correct"
+              : "feedback-incorrect";
+            const feedbackText = isCorrect
+              ? question.feedback.correct
+              : question.feedback.incorrect;
+            feedbackHTML = `<div class="feedback-box-mobile ${feedbackClass}">${feedbackText}</div>`;
           }
 
-          optionsHTML += `
-                    <div class="${optionClass}" data-letter="${option.letter}">
-                        <div class="option-indicator-mobile">${option.letter}</div>
-                        <div class="option-text-mobile">${option.text}</div>
-                    </div>
-                `;
+          html += `
+            <div class="question-card-mobile" id="question-${index}">
+              <div class="question-header-mobile">
+                <div class="question-meta-mobile">
+                  <div class="question-number-mobile">${index + 1}</div>
+                </div>
+                <div class="question-value-mobile">
+                  <i class="fas fa-coins"></i> KSH ${CONFIG.QUESTION_VALUE}
+                </div>
+              </div>
+              <div class="question-text-mobile">${question.question}</div>
+              <div class="options-container-mobile">${optionsHTML}</div>
+              ${feedbackHTML}
+            </div>
+          `;
         });
 
-        // Generate feedback if completed
-        let feedbackHTML = "";
-        if (state.surveyCompleted && userAnswer !== null) {
-          const selectedOption = question.options.find(
-            (opt) => opt.letter === userAnswer,
-          );
-          const isCorrect = selectedOption ? selectedOption.correct : false;
-          const feedbackClass = isCorrect
-            ? "feedback-correct"
-            : "feedback-incorrect";
-          const feedbackText = isCorrect
-            ? question.feedback.correct
-            : question.feedback.incorrect;
+        elements.questionsContainer.innerHTML = html;
 
-          feedbackHTML = `<div class="feedback-box-mobile ${feedbackClass}">${feedbackText}</div>`;
-        }
-
-        const questionHTML = `
-                <div class="question-card-mobile active">
-                    <div class="question-header-mobile">
-                        <div class="question-meta-mobile">
-                            <div class="question-number-mobile">${state.currentQuestionIndex + 1}</div>
-                            <div class="question-category-mobile ${categoryClass}">${categoryText}</div>
-                        </div>
-                        <div class="question-value-mobile">
-                            <i class="fas fa-coins"></i>
-                            KSH ${CONFIG.QUESTION_VALUE}
-                        </div>
-                    </div>
-                    <div class="question-text-mobile">${question.question}</div>
-                    <div class="options-container-mobile">
-                        ${optionsHTML}
-                    </div>
-                    ${feedbackHTML}
-                </div>
-            `;
-
-        elements.questionsContainer.innerHTML = questionHTML;
-
-        // Add event listeners to options
-        document.querySelectorAll(".option-card-mobile").forEach((option) => {
-          option.addEventListener("click", () => {
+        // Add event listeners
+        document.querySelectorAll(".option-item-mobile").forEach((option) => {
+          option.addEventListener("click", function () {
             if (state.surveyCompleted) return;
 
-            const selectedLetter = option.getAttribute("data-letter");
+            const letter = this.getAttribute("data-letter");
+            const questionIndex = parseInt(this.getAttribute("data-question"));
 
-            // Update answer
-            state.userAnswers[state.currentQuestionIndex] = selectedLetter;
-
-            // Update UI
-            updateOptionSelection(selectedLetter);
-            updateMobileStats();
-            updateMobileNavigation();
-            updateQuestionNavigation();
+            state.userAnswers[questionIndex] = letter;
+            updateOptionSelection(questionIndex, letter);
+            updateSubmitButton();
           });
         });
-
-        // Update progress
-        updateMobileProgress();
-
-        // Scroll to top of question
-        elements.questionsContainer.scrollTop = 0;
       }
 
       // Update option selection
-      function updateOptionSelection(selectedLetter) {
-        const options = document.querySelectorAll(".option-card-mobile");
+      function updateOptionSelection(questionIndex, selectedLetter) {
+        const questionElement = document.getElementById(
+          `question-${questionIndex}`,
+        );
+        const options = questionElement.querySelectorAll(".option-item-mobile");
 
         options.forEach((opt) => {
           opt.classList.remove("selected");
           const letter = opt.getAttribute("data-letter");
+          const radioInput = opt.querySelector(".checkbox-input");
+
           if (letter === selectedLetter) {
             opt.classList.add("selected");
+            radioInput.checked = true;
+          } else {
+            radioInput.checked = false;
           }
         });
       }
 
-      // Update mobile statistics
-      function updateMobileStats() {
-        const answered = state.userAnswers.filter(
+      // Update submit button state
+      function updateSubmitButton() {
+        const allAnswered = state.userAnswers.every(
           (answer) => answer !== null,
-        ).length;
-        elements.answeredCount.textContent = answered;
+        );
+        elements.submitBtn.disabled = !allAnswered;
       }
 
-      // Update mobile progress
-      function updateMobileProgress() {
-        const progress =
-          ((state.currentQuestionIndex + 1) / CONFIG.TOTAL_QUESTIONS) * 100;
-        elements.progressFill.style.width = `${progress}%`;
-        elements.progressPercent.textContent = `${Math.round(progress)}%`;
-        elements.currentQuestion.textContent = state.currentQuestionIndex + 1;
-      }
-
-      // Update mobile navigation buttons
-      function updateMobileNavigation() {
-        // Previous button
-        elements.prevBtn.disabled = state.currentQuestionIndex === 0;
-
-        // Next/Submit buttons
-        if (state.currentQuestionIndex === CONFIG.TOTAL_QUESTIONS - 1) {
-          elements.nextBtn.style.display = "none";
-          elements.submitBtn.style.display = "flex";
-
-          // Enable submit only if all questions answered
-          const allAnswered = state.userAnswers.every(
-            (answer) => answer !== null,
-          );
-          elements.submitBtn.disabled = !allAnswered;
-        } else {
-          elements.nextBtn.style.display = "flex";
-          elements.submitBtn.style.display = "none";
-        }
-
-        // Enable next only if current question answered
-        elements.nextBtn.disabled =
-          state.userAnswers[state.currentQuestionIndex] === null;
-
-        // Update button texts for mobile
-        const prevText = elements.prevBtn.querySelector(".button-text");
-        const nextText = elements.nextBtn.querySelector(".button-text");
-
-        if (state.currentQuestionIndex === 0) {
-          prevText.textContent = "Back";
-        } else {
-          prevText.textContent = "Previous";
-        }
-
-        if (state.currentQuestionIndex === CONFIG.TOTAL_QUESTIONS - 1) {
-          nextText.textContent = "Last";
-        } else {
-          nextText.textContent = "Next";
-        }
-      }
-
-      // Mobile timer functions
-      function startMobileTimer() {
-        updateMobileTimerDisplay();
+      // Timer functions
+      function startTimer() {
+        updateTimerDisplay();
         state.timerInterval = setInterval(() => {
           state.timeRemaining--;
-          updateMobileTimerDisplay();
+          updateTimerDisplay();
 
           if (state.timeRemaining <= 0) {
             clearInterval(state.timerInterval);
             if (!state.surveyCompleted) {
-              autoSubmitMobileSurvey();
+              autoSubmitAssessment();
             }
           }
         }, 1000);
       }
 
-      function updateMobileTimerDisplay() {
+      function updateTimerDisplay() {
         const minutes = Math.floor(state.timeRemaining / 60);
         const seconds = state.timeRemaining % 60;
         elements.timer.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
@@ -1441,13 +1148,16 @@
         if (state.timeRemaining <= 30) {
           elements.timer.style.color = "var(--danger-color)";
           elements.timer.style.borderColor = "var(--danger-color)";
-          elements.timer.style.animation =
-            state.timeRemaining % 2 === 0 ? "none" : "pulse 1s infinite";
+          if (state.timeRemaining % 2 === 1) {
+            elements.timer.style.boxShadow = "0 0 10px var(--danger-color)";
+          } else {
+            elements.timer.style.boxShadow = "none";
+          }
         }
       }
 
-      // Calculate mobile results
-      function calculateMobileResults() {
+      // Calculate results
+      function calculateResults() {
         let correct = 0;
         let incorrect = 0;
 
@@ -1473,13 +1183,12 @@
         return { correct, incorrect, earnings, percentage };
       }
 
-      // Show mobile results
-      function showMobileResults() {
+      // Show results
+      function showResults() {
         state.surveyCompleted = true;
         clearInterval(state.timerInterval);
 
-        // Calculate results
-        const results = calculateMobileResults();
+        const results = calculateResults();
 
         // Update results display
         elements.earningsAmount.textContent = `KSH ${results.earnings}`;
@@ -1494,28 +1203,28 @@
           Date.now().toString(),
         );
 
-        // Show dashboard
+        // Re-render questions with feedback
+        renderAllQuestions();
+
+        // Show results dashboard
         document.querySelector(".questions-container").style.display = "none";
         document.querySelector(".survey-navigation-mobile").style.display =
           "none";
-        document.querySelector(".question-nav-mobile").style.display = "none";
         elements.resultsDashboard.style.display = "block";
 
-        // Show welcome message if applicable
-        checkMobileWelcomeBack();
+        checkWelcomeBack();
       }
 
-      // Auto-submit mobile survey
-      function autoSubmitMobileSurvey() {
-        // Fill unanswered questions
+      // Auto-submit
+      function autoSubmitAssessment() {
         state.userAnswers = state.userAnswers.map((answer) =>
           answer === null ? "" : answer,
         );
-        showMobileResults();
+        showResults();
       }
 
-      // Check and show mobile welcome back
-      function checkMobileWelcomeBack() {
+      // Check and show welcome back
+      function checkWelcomeBack() {
         if (!state.lastCompletionTimestamp) return;
 
         const oneHourMs = 60 * 60 * 1000;
@@ -1529,75 +1238,64 @@
         }
       }
 
-      // Event Listeners for Mobile
-      elements.prevBtn.addEventListener("click", () => {
-        if (state.currentQuestionIndex > 0) {
-          state.currentQuestionIndex--;
-          renderCurrentQuestion();
-          updateMobileNavigation();
-          updateQuestionNavigation();
-        }
-      });
-
-      elements.nextBtn.addEventListener("click", () => {
-        if (state.currentQuestionIndex < CONFIG.TOTAL_QUESTIONS - 1) {
-          state.currentQuestionIndex++;
-          renderCurrentQuestion();
-          updateMobileNavigation();
-          updateQuestionNavigation();
-        }
-      });
-
+      // Event Listeners
       elements.submitBtn.addEventListener("click", () => {
-        showMobileResults();
+        const allAnswered = state.userAnswers.every(
+          (answer) => answer !== null,
+        );
+
+        if (!allAnswered) {
+          const firstUnansweredIndex = state.userAnswers.findIndex(
+            (answer) => answer === null,
+          );
+          if (firstUnansweredIndex !== -1) {
+            const questionElement = document.getElementById(
+              `question-${firstUnansweredIndex}`,
+            );
+            questionElement.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            questionElement.style.borderColor = "var(--danger-color)";
+            questionElement.style.boxShadow =
+              "0 0 0 2px rgba(231, 76, 60, 0.2)";
+
+            setTimeout(() => {
+              questionElement.style.borderColor = "";
+              questionElement.style.boxShadow = "";
+            }, 2000);
+          }
+          return;
+        }
+
+        showResults();
       });
 
       elements.reviewBtn.addEventListener("click", () => {
-        // Go back to first question for review
-        state.currentQuestionIndex = 0;
         elements.resultsDashboard.style.display = "none";
         document.querySelector(".questions-container").style.display = "block";
         document.querySelector(".survey-navigation-mobile").style.display =
           "flex";
-        document.querySelector(".question-nav-mobile").style.display = "flex";
-        renderCurrentQuestion();
-        updateMobileNavigation();
-        updateQuestionNavigation();
+        elements.questionsContainer.scrollTop = 0;
       });
 
       elements.restartBtn.addEventListener("click", () => {
-        // Reset state
-        state.currentQuestionIndex = 0;
         state.userAnswers = new Array(CONFIG.TOTAL_QUESTIONS).fill(null);
         state.timeRemaining = CONFIG.TIME_LIMIT;
         state.surveyCompleted = false;
 
-        // Reset UI
         elements.resultsDashboard.style.display = "none";
         document.querySelector(".questions-container").style.display = "block";
         document.querySelector(".survey-navigation-mobile").style.display =
           "flex";
-        document.querySelector(".question-nav-mobile").style.display = "flex";
         elements.welcomeMessage.style.display = "none";
 
-        // Reset timer
         elements.timer.style.color = "var(--danger-color)";
         elements.timer.style.borderColor = "var(--danger-color)";
-        elements.timer.style.animation = "none";
+        elements.timer.style.boxShadow = "none";
 
-        // Reinitialize
-        initMobileApp();
-      });
-
-      // Handle mobile back button
-      window.addEventListener("popstate", function (event) {
-        if (state.currentQuestionIndex > 0) {
-          state.currentQuestionIndex--;
-          renderCurrentQuestion();
-          updateMobileNavigation();
-          updateQuestionNavigation();
-          history.pushState(null, null, window.location.pathname);
-        }
+        initApp();
+        elements.questionsContainer.scrollTop = 0;
       });
 
       // Prevent zoom on double-tap
@@ -1615,12 +1313,7 @@
       );
 
       // Initialize on load
-      document.addEventListener("DOMContentLoaded", initMobileApp);
-
-      // Handle orientation change
-      window.addEventListener("orientationchange", function () {
-        setTimeout(updateMobileProgress, 100);
-      });
+      document.addEventListener("DOMContentLoaded", initApp);
     </script>
   </body>
 </html>
